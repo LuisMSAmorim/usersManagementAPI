@@ -6,8 +6,7 @@ import jwt from "jsonwebtoken";
 import bcrypt from "bcrypt";
 
 
-
-const secret = 'SAIOADS1051168FMÇLAMIIOSAMIO494689'
+const secret = '#######'
 
 class UserController{
 
@@ -193,7 +192,7 @@ class UserController{
                 return response.status(406).json({error: 'Invalid password'});
             };
 
-            const token = jwt.sign({email}, secret);
+            const token = jwt.sign({email, admin: findUser.admin}, secret);
 
             return response.status(200).json({token});
         }catch(err){

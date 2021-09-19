@@ -34,7 +34,7 @@ export class User{
 
     async userLogin(email:string){
         try{
-            const result = await knex.select('email', 'password').from('users').where({email});
+            const result = await knex.select('email', 'password', 'admin').from('users').where({email});
 
             if(result.length == 0){
                 return false;
