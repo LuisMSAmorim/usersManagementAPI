@@ -16,3 +16,6 @@ router.patch('/user/:id', userController.updateUser);
 // Recovery Password Route
 router.post('/recovery', userController.recoveryPassword);
 router.post('/changepassword', userController.changePassword);
+
+// Login Route
+router.post('/login', userController.login);

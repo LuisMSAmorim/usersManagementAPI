@@ -32,6 +32,20 @@ export class User{
         };
     };
 
+    async userLogin(email:string){
+        try{
+            const result = await knex.select('email', 'password').from('users').where({email});
+
+            if(result.length == 0){
+                return false;
+            };
+
+            return result[0];
+        }catch(err){
+            return false;
+        };
+    };
+
     async findId(id: number){
         try{
             const result = await knex.select('id').from('users').where({id});

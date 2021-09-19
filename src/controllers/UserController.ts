@@ -2,7 +2,12 @@ import { request, Request, Response } from "express";
 import validator from "validator";
 import { user } from "../models/User";
 import { passwordToken } from "../models/PasswordToken";
+import jwt from "jsonwebtoken";
+import bcrypt from "bcrypt";
 
+
+
+const secret = 'SAIOADS1051168FMÇLAMIIOSAMIO494689'
 
 class UserController{
 
@@ -167,6 +172,30 @@ class UserController{
             await user.changePassword(password, tokenValidate.user_id, token);
 
             return response.status(200).json({message: 'Password changed'});
+        }catch(err){
+            return response.status(500).json({error: err});
+        };
+    };
+
+    async login(request: Request, response: Response){
+        const { email, password } = request.body;
+
+        try{
+            const findUser = await user.userLogin(email);
+
+            if(!findUser){
+                return response.status(404).json({error: 'User not found'});
+            };
+    
+            const compare = await bcrypt.compare(password, findUser.password);
+
+            if(!compare){
+                return response.status(406).json({error: 'Invalid password'});
+            };
+
+            const token = jwt.sign({email}, secret);
+
+            return response.status(200).json({token});
         }catch(err){
             return response.status(500).json({error: err});
         };
