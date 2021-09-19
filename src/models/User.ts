@@ -9,6 +9,8 @@ export class User{
             const hash = await bcrypt.hash(password, 10);
 
             await knex.insert({email, password: hash, name, admin}).table("users");
+            
+            return true;
         }catch(err){
             return err;
         };
@@ -75,6 +77,8 @@ export class User{
     async delete(id: number){
         try{
             await knex.del().from('users').where({id});
+
+            return true;
         }catch(err){
             return err;
         };
@@ -83,8 +87,24 @@ export class User{
     async update(id: number, name: string, email: string, admin: boolean){
         try{
             await knex.update({id, name, email, admin}).from('users').where({id});
+
+            return true;
         }catch(err){
             return err
+        };
+    };
+
+    async changePassword(newPassword:string, id:number, token: string){
+        try{
+            const hash = await bcrypt.hash(newPassword, 10);
+
+            await knex.update({password: hash}).table('users').where({id});
+
+            await knex.update({used: true}).table('passwordtokens').where({token});
+
+            return true;
+        }catch(err){
+            return false;
         };
     };
 };

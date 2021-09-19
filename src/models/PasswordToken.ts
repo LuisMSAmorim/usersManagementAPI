@@ -23,6 +23,33 @@ class PasswordToken{
            return err;
         };
     };
+
+    async validate(token:string, email: string){
+        try{
+            const result = await knex.select('*').table('passwordtokens').where({token});
+
+            if(result.length == 0){
+                return false;
+            };
+
+            const tk = result[0];
+            const user_id = tk.user_id;
+
+            const emailId = await knex.select('id').table('users').where({email});
+
+            if(emailId[0].id != user_id){
+                return false;
+            };
+
+            if(tk.used == 1){
+                return false;
+            };
+
+            return {user_id};
+        }catch(err){
+            return false;
+        };
+    };
 };
 
 export const passwordToken = new PasswordToken();

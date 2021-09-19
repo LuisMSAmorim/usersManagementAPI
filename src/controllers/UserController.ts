@@ -143,6 +143,34 @@ class UserController{
             return response.status(500).json({error: err});
         };
     };
+
+    async changePassword(request: Request, response: Response){
+        const { token, email, password, password2 } = request.body;
+
+        try{
+            if(!email){
+                return response.status(400).json({email: 'Invalid email'});
+            };
+            if(!validator.isStrongPassword(password)){
+                return response.status(400).json({password: 'Your password must have 6 characters and 1 upper case, 1 lower case and 1 symbol'});
+            };
+            if(password != password2){
+                return response.status(400).json({password: 'Passowords dont match'});
+            };
+
+            const tokenValidate = await passwordToken.validate(token, email);
+
+            if(!tokenValidate){
+                return response.status(406).json({token: 'Invalid Token'});
+            };
+
+            await user.changePassword(password, tokenValidate.user_id, token);
+
+            return response.status(200).json({message: 'Password changed'});
+        }catch(err){
+            return response.status(500).json({error: err});
+        };
+    };
 };
 
 export const userController = new UserController();
