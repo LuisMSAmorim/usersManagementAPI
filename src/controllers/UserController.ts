@@ -1,6 +1,7 @@
-import { Request, Response } from "express";
+import { request, Request, Response } from "express";
 import validator from "validator";
 import { user } from "../models/User";
+import { passwordToken } from "../models/PasswordToken";
 
 
 class UserController{
@@ -98,9 +99,46 @@ class UserController{
                 return response.status(404).json({error: 'User not found'});
             };
 
+            if(!name){
+                return response.status(400).json({name: 'Invalid name'});
+            };
+            if(!validator.isEmail(email)){
+                return response.status(400).json({email: 'Invalid email'});
+            };
+            if(typeof(admin) != 'boolean'){
+                return response.status(400).json({admin: "Invalid admin boolean"});
+            };
+            
+            const emailSnapshot = await user.findEmail(email);
+
+            if(emailSnapshot && emailSnapshot != email || emailSnapshot){
+                console.log(emailSnapshot)
+                return response.status(400).json({email: 'Email already in use'});
+            };
+
             await user.update(id, name, email, admin);
 
             return response.status(200).json({message: `User ${id} updated`});
+        }catch(err){
+            return response.status(500).json({error: err});
+        };
+    };
+
+    async recoveryPassword(request: Request, response: Response){
+        const { email } = request.body;
+
+        try{
+            if(!email){
+                return response.status(400).json({email: 'Invalid email'});
+            };
+
+            const token = await passwordToken.create(email);
+
+            if(!token){
+                return response.status(404).json({error: 'User not found'});
+            };
+
+            return response.status(201).json({message: `Token ${token} created`});
         }catch(err){
             return response.status(500).json({error: err});
         };

@@ -22,7 +22,9 @@ export class User{
                 return false;
             };
 
-            return true;
+            const emailData = result[0].email
+
+            return emailData;
         }catch{
             return false;
         };

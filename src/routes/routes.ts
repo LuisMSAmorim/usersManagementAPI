@@ -12,3 +12,6 @@ router.get('/user/:id', userController.getUser);
 router.post('/user', userController.createUser);
 router.delete('/user/:id', userController.deleteUser);
 router.patch('/user/:id', userController.updateUser);
+
+// Recovery Password Route
+router.post('/recovery', userController.recoveryPassword);
