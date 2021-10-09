@@ -20,7 +20,7 @@ class UserController{
             if(!validator.isEmail(email)){
                 return response.status(400).json({email: 'Invalid email'});
             };
-            if(!validator.isStrongPassword(password)){
+            if(!validator.isStrongPassword(password, {minLength: 6, minNumbers: 1, minSymbols: 1, minUppercase: 1})){
                 return response.status(400).json({password: 'Your password must have 6 characters and 1 upper case, 1 lower case and 1 symbol'});
             };
             if(password != password2){
