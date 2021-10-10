@@ -58,7 +58,7 @@
 
  - (201) -> Your user have been registered;
  - (400) -> A request error have been ocurred and this will be return with details;
- - (500) -> A internal server error have been ocurred;
+ - (500) -> A internal server error has been ocurred;
 
  <h2>DELETE /user/:id</h2>
 
@@ -73,7 +73,7 @@
  - (200) -> The user have been deleted;
  - (400) -> A request error have been ocurred and this will be return with details;
  - (404) -> The user was not founded at database;
- - (500) -> A internal server error have been ocurred;
+ - (500) -> A internal server error has been ocurred;
 
  <h2>PATCH /user/:id</h2>
 
@@ -96,7 +96,7 @@
  - (200) -> The user have been updated;
  - (400) -> A request error have been ocurred and this will be return with details;
  - (404) -> The user was not founded at database;
- - (500) -> A internal server error have been ocurred;
+ - (500) -> A internal server error has been ocurred;
 
  <h2>GET /user/:id</h2>
 
@@ -111,7 +111,7 @@
  - (200) -> The user data will be returned;
  - (400) -> A request error have been ocurred and this will be return with details;
  - (404) -> The user was not founded at database;
- - (500) -> A internal server error have been ocurred;
+ - (500) -> A internal server error has been ocurred;
 
  <h2>GET /users</h2>
 
@@ -124,7 +124,7 @@
  - (200) -> The users data will be returned;
  - (400) -> A request error have been ocurred and this will be return with details;
  - (404) -> The user was not founded at database;
- - (500) -> A internal server error have been ocurred;
+ - (500) -> A internal server error has been ocurred;
 
  <h2>POST /recovery</h2>
 
@@ -145,7 +145,7 @@
  - (200) -> A recovery password token will be returned;
  - (400) -> A request error have been ocurred and this will be return with details;
  - (404) -> The user was not founded at database;
- - (500) -> A internal server error have been ocurred;
+ - (500) -> A internal server error has been ocurred;
 
  <h2>POST /changepassword</h2>
 
@@ -170,7 +170,7 @@
  - (400) -> A request error have been ocurred and this will be return with details;
  - (404) -> The user was not founded at database;
  - (406) -> Invalid recovery token;
- - (500) -> A internal server error have been ocurred;
+ - (500) -> A internal server error has been ocurred;
 
  <h2>POST /login</h2>
 
@@ -192,4 +192,4 @@
  - (400) -> A request error have been ocurred and this will be return with details;
  - (404) -> The user was not founded at database;
  - (406) -> Invalid password;
- - (500) -> A internal server error have been ocurred;
+ - (500) -> A internal server error has been ocurred;
