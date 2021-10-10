@@ -41,7 +41,7 @@
 
 <p>This endpoint is responsable for create an user (admin or not).</p>
 
- - To use this route, you must to insert a admin JSON WEB TOKEN (bearer authentication) at the request header;
+ - To use this route, you must insert a admin JSON WEB TOKEN (bearer authentication) at the request header;
  - Example of Request:
 
  ```
@@ -64,7 +64,7 @@
 
  <p>This endpoint is responsable for delete an user.</p>
 
- - To use this route, you must to insert a admin JSON WEB TOKEN (bearer authentication) at the request header;
+ - To use this route, you must insert a admin JSON WEB TOKEN (bearer authentication) at the request header;
  
  - Parameter: you need to pass a user id, registered in database;
 
@@ -79,7 +79,7 @@
 
  <p>This endpoint is responsable for update an user data (except the password).</p>
 
- - To use this route, you must to insert a admin JSON WEB TOKEN (bearer authentication) at the request header;
+ - To use this route, you must insert a admin JSON WEB TOKEN (bearer authentication) at the request header;
  
  - Parameter: you need to pass a user id, registered in database;
   - Example of Request:
@@ -102,7 +102,7 @@
 
  <p>This endpoint is responsable for return user data.</p>
 
- - To use this route, you must to insert a user JSON WEB TOKEN (bearer authentication) at the request header;
+ - To use this route, you must insert a user JSON WEB TOKEN (bearer authentication) at the request header;
  
  - Parameter: you need to pass a user id, registered in database;
 
@@ -117,7 +117,7 @@
 
  <p>This endpoint is responsable for return data of all users.</p>
 
- - To use this route, you must to insert a user JSON WEB TOKEN (bearer authentication) at the request header;
+ - To use this route, you must insert a user JSON WEB TOKEN (bearer authentication) at the request header;
  
  <h3>Responses:</h3>
 
