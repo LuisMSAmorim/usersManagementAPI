@@ -9,7 +9,7 @@ import bcrypt from "bcrypt";
 const secret = '#######'
 
 class UserController{
-
+    
     async createUser(request: Request, response: Response){
         const { name, email, password, password2, admin } = request.body;
 
@@ -62,6 +62,10 @@ class UserController{
         const id = Number.parseInt(request.params.id);
 
         try{
+            if(!id){
+                return response.status(400).json({error: 'Invalid id'});
+            };
+
             const userSnapshot = await user.get(id);
 
             if(!userSnapshot){
@@ -78,6 +82,10 @@ class UserController{
         const id = Number.parseInt(request.params.id);
 
         try{
+            if(!id){
+                return response.status(400).json({error: 'Invalid id'});
+            };
+
             const idSnapshot = await user.findId(id);
 
             if(!idSnapshot){
@@ -97,6 +105,10 @@ class UserController{
         const { name, email, admin } = request.body;
 
         try{
+            if(!id){
+                return response.status(400).json({error: 'Invalid id'});
+            };
+
             const idSnapshot = await user.findId(id);
 
             if(!idSnapshot){
@@ -180,6 +192,13 @@ class UserController{
         const { email, password } = request.body;
 
         try{
+            if(!email){
+                return response.status(400).json({email: 'Invalid email'});
+            };
+            if(!password){
+                return response.status(400).json({password: 'Invalid password'});
+            };
+
             const findUser = await user.userLogin(email);
 
             if(!findUser){
