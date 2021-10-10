@@ -39,7 +39,7 @@
 
  <h2>POST /user</h2>
 
-<p>This endpoint is responsable for create a user (admin or not).</p>
+<p>This endpoint is responsable for create an user (admin or not).</p>
 
  - To use this route, you must to insert a admin JSON WEB TOKEN (bearer authentication) at the request header;
  - Example of Request:
@@ -62,7 +62,7 @@
 
  <h2>DELETE /user/:id</h2>
 
- <p>This endpoint is responsable for delete a user.</p>
+ <p>This endpoint is responsable for delete an user.</p>
 
  - To use this route, you must to insert a admin JSON WEB TOKEN (bearer authentication) at the request header;
  
@@ -77,7 +77,7 @@
 
  <h2>PATCH /user/:id</h2>
 
- <p>This endpoint is responsable for update a user data (except the password).</p>
+ <p>This endpoint is responsable for update an user data (except the password).</p>
 
  - To use this route, you must to insert a admin JSON WEB TOKEN (bearer authentication) at the request header;
  
@@ -149,7 +149,7 @@
 
  <h2>POST /changepassword</h2>
 
- <p>This endpoint is responsable for change a user password.</p>
+ <p>This endpoint is responsable for change an user password.</p>
 
  - Anyone can use this route;
  - The new password must respect the same conditions of POST /user route;
